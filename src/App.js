@@ -6,15 +6,15 @@ let completedTodoCardList = [];
 export default function App() {
     return (
         <div className="App">
-            <NavbarComp />
-            <MainComp />
+            <Navbar  />
+            <Modal  />
             <CreateTodoComp />
             <OverlayComp />
         </div>
     );
 }
 
-const NavbarComp = () => {
+const Navbar  = () => {
     return (
         <header className="topHeader">
             <h2 className="hiofTopBanner">HIOF</h2>
@@ -23,17 +23,17 @@ const NavbarComp = () => {
     )
 }
 
-const MainComp = () => {
+const Modal  = () => { //Search ligger i completedList, TodoCard ligger i TodoCardList
     return (
         <main>
-            <AddTodoButtonComp />
-            <GenerateCards />
-            <GenerateCompletedCardAndSearch />
+            <TodoButton  />
+            <TodoCardList  />
+            <CompletedList  />
         </main>
     )
 }
 
-const AddTodoButtonComp = () => {
+const TodoButton  = () => {
     return (
         <section className="todoButtonSection" id="todoButtonSectionID">
             <p className="todoButtonText" onClick={openCreateTodoForm}>+ Todo</p>
@@ -158,7 +158,7 @@ function generateDummyCards(quantity) {
     }
 }
 function setTodoCardList() { }
-const GenerateCards = () => {
+const TodoCardList  = () => {
     const [list, setList] = useState(todoCardList); // eslint-disable-next-line
     setTodoCardList = setList;
     todoCardList = list;
@@ -200,7 +200,7 @@ function generateCompletedDummyCards(quantity) {
 }
 
 function completedCardSetList() { };
-const GenerateCompletedCardAndSearch = () => {
+const CompletedList  = () => {
     const [list, setList] = useState(completedTodoCardList); // eslint-disable-next-line
     completedCardSetList = setList;
     completedTodoCardList = list;
